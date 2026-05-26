@@ -1,3 +1,5 @@
+package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,7 +14,7 @@ public class Producto {
     private String nombre;
 
     @Column(name = "id_categoria")
-    private String idCategoria;
+    private Integer idCategoria;
 
     @Column(name = "codigo_barras")
     private String codigoBarras;
@@ -22,4 +24,5 @@ public class Producto {
 
     @Column(name = "cantidad_stock")
     private Integer cantidadStock;
+
 }
