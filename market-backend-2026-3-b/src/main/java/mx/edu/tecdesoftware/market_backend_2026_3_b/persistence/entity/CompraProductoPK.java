@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public class CompraProductoPK {
+public class  CompraProductoPK {
 
     @Column(name = "id_compra")
     private Integer idCompra;
