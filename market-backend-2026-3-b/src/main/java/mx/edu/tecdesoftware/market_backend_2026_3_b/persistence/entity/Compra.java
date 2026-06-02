@@ -1,28 +1,32 @@
 package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "compras")
 public class Compra {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_compra")
+    @Column (name = "id_compra")
     private Integer idCompra;
 
-    @Column(name = "fecha_compra")
-    private LocalDateTime fechaCompra;
+    @Column (name = "id_cliente")
+    private String idCliente;
 
-    @Column(name = "total")
-    private Double total;
+    private LocalDateTime fecha;
 
-    @Column(name = "metodo_pago")
-    private String metodoPago;
+    @Column (name = "medio_pago")
+    private String medioPago;
+    private String comentario;
+    private String estado;
 
-    @Column(name = "estatus")
-    private String estatus;
+
+    //Relacion con cliente: Muchas compras para un cliente
+    @ManyToOne
+    @JoinColumn(name = "id:cliente", insertable = false, updatable = false)
+    private Cliente cliente;
+
 
     public Integer getIdCompra() {
         return idCompra;
@@ -32,35 +36,43 @@ public class Compra {
         this.idCompra = idCompra;
     }
 
-    public LocalDateTime getFechaCompra() {
-        return fechaCompra;
+    public String getIdCliente() {
+        return idCliente;
     }
 
-    public void setFechaCompra(LocalDateTime fechaCompra) {
-        this.fechaCompra = fechaCompra;
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public Double getTotal() {
-        return total;
+    public LocalDateTime getFecha() {
+        return fecha;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
     }
 
-    public String getMetodoPago() {
-        return metodoPago;
+    public String getMedioPago() {
+        return medioPago;
     }
 
-    public void setMetodoPago(String metodoPago) {
-        this.metodoPago = metodoPago;
+    public void setMedioPago(String medioPago) {
+        this.medioPago = medioPago;
     }
 
-    public String getEstatus() {
-        return estatus;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setEstatus(String estatus) {
-        this.estatus = estatus;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

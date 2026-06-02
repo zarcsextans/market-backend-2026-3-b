@@ -1,22 +1,32 @@
 package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
 
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "compras_productos")
-public class  CompraProducto {
-
+public class CompraProducto {
     @EmbeddedId
     private CompraProductoPK id;
 
-    private Integer cantidad;
-    private double total;
-    private Boolean estado;
+    //Saber los productos que hay en una compra
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_compra_producto")
-    private Integer idCompraProducto;
+
+
+    //unir la tabla de compras
+    @ManyToOne
+    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
+    private Compra compra;
+
+
+    //Unir la tabla de productos
+    @ManyToOne
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
+    private Producto producto;
+
+
+    private Integer cantidad;
+    private Double total;
+    private Boolean estado;
 
 }

@@ -3,16 +3,24 @@ package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "categorias")
+@Table(name = "categrias")
 public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id_categoria")
     private Integer idCategoria;
 
-    private String descripción;
+    private String descripcion;
     private Boolean estado;
+
+    @OneToMany(mappedBy = "categoria")
+    //"quiero que me des una lista de los productos"
+    private List<Producto> productos;
+
 
     public Integer getIdCategoria() {
         return idCategoria;
@@ -22,12 +30,12 @@ public class Categoria {
         this.idCategoria = idCategoria;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Boolean getEstado() {
@@ -37,4 +45,9 @@ public class Categoria {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
+    public Categoria() {
+
+    }
+
 }
