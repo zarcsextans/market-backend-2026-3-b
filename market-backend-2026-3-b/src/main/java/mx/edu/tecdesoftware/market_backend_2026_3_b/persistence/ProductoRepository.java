@@ -15,4 +15,25 @@ public class ProductoRepository {
         //Se "castea" Iterable a lista
         return (List<Producto>) productoCrudRepository.findAll();
     }
+    //Obtener productos por categoria
+    public List<Producto> getByCategoria(int idCategoria) {
+        return productoCrudRepository.findByCantidadOrderByNombreASC(idCategoria);
+    }
+
+    //Obtener productos escasos
+    public Optional<List<Producto>> getEscasos(int cantidad) {
+        return productoCrudRepository.findByCantidadStockLessThanAndEstado(cantidad, true);
+    }
+    //Obtener un producto dado el 10
+    public Optional<Producto> getProductoById(int idProducto) {
+        return productoCrudRepository.save(producto);
+    }
+    //Guardar un producto
+    public Producto addProducto(Producto producto) {
+        return productoCrudRepository.save(producto);
+    }
+    //Eliminar un producto
+    public void deleteProductoById(int idProducto) {
+        productoCrudRepository.deleteById(idProducto);
+    }
 }
