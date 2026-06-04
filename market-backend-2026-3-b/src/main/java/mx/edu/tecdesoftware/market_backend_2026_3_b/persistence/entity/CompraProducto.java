@@ -12,7 +12,6 @@ public class CompraProducto {
     //Saber los productos que hay en una compra
 
 
-
     //unir la tabla de compras
     @ManyToOne
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
@@ -29,4 +28,52 @@ public class CompraProducto {
     private Double total;
     private Boolean estado;
 
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public CompraProductoPK getId() {
+        return id;
+    }
+
+    public void setId(CompraProductoPK id) {
+        this.id = id;
+    }
 }
+

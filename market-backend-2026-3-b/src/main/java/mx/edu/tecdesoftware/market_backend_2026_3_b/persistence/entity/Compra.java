@@ -24,7 +24,7 @@ public class Compra {
 
     //Relacion con cliente: Muchas compras para un cliente
     @ManyToOne
-    @JoinColumn(name = "id:cliente", insertable = false, updatable = false)
+    @JoinColumn(name = "idCliente", insertable = false, updatable = false)
     private Cliente cliente;
 
 
