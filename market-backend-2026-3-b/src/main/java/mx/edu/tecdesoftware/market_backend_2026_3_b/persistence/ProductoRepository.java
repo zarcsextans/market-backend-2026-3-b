@@ -20,16 +20,16 @@ public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductMapper productMapper;
 
-    // SELECT * FROM productos
+    //  SELECT * FROM productos
     @Override
     public List<Product> getAll() {
         List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
         return productMapper.toProducts(productos);
     }
 
-    // Obtener productos por categoria
+    //  Obtener productos por categoria
     @Override
-    public Optional<List<Product>> getByCategory(int categoryId) {
+    public Optional<List<Product>>  getByCategory(int categoryId) {
 
         List<Producto> productos =
                 productoCrudRepository.findByCategoriaIdCategoria(categoryId);
@@ -55,7 +55,7 @@ public class ProductoRepository implements ProductRepository {
                 .map(productMapper::toProduct);
     }
 
-    // Guardar producto
+    //  Guardar producto
     @Override
     public Product save(Product product) {
 
@@ -63,7 +63,7 @@ public class ProductoRepository implements ProductRepository {
         return productMapper.toProduct(productoCrudRepository.save(producto));
     }
 
-    // Eliminar producto
+    //  Eliminar producto
     @Override
     public void delete(int productId) {
 
