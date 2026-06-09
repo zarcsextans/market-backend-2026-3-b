@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface ProductoCrudRepository extends CrudRepository<Producto, Integer> {
 
-    // ✔ Productos por categoría (CORRECTO)
+    // Productos por categoría (CORRECTO)
     List<Producto> findByCategoriaIdCategoriaOrderByNombreAsc(int idCategoria);
 
-    // ✔ Productos escasos
+    //  Productos escasos
     List<Producto> findByCantidadStockLessThanAndEstado(int cantidad, boolean estado);
 
     List<Producto> findByCategoriaIdCategoria(int categoryId);
