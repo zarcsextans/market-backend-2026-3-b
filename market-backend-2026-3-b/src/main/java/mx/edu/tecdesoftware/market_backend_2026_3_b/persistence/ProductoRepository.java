@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+// Le da acceso a la BD
 public class ProductoRepository implements ProductRepository {
 
     @Autowired
@@ -20,53 +21,41 @@ public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductMapper productMapper;
 
-    //  SELECT * FROM productos
-    @Override
-    public List<Product> getAll() {
+    // SELECT * FROM productos
+    public List<Product> getAll(){
+        // Se castea Iterable a lista
         List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
         return productMapper.toProducts(productos);
     }
 
-    //  Obtener productos por categoria
-    @Override
-    public Optional<List<Product>>  getByCategory(int categoryId) {
+    // Obtener productos por categoria
 
-        List<Producto> productos =
-                productoCrudRepository.findByCategoriaIdCategoria(categoryId);
-
+    public Optional<List<Product>> getByCategory(int categoryId){
+        List<Producto> productos
+                = productoCrudRepository.findByCantidadOrderByNombreAsc(categoryId);
         return Optional.of(productMapper.toProducts(productos));
     }
 
     // Obtener productos escasos
-    @Override
-    public Optional<List<Product>> getScarseProducts(int quantity) {
-
-        List<Producto> productos =
+    public Optional<List<Product>> getScarceProducts(int quantity){
+        Optional<List<Producto>> productos =
                 productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true);
-
-        return Optional.of(productMapper.toProducts(productos));
+        return Optional.of(productMapper.toProducts(productos.get()));
     }
 
-    // Obtener un producto por id
-    @Override
-    public Optional<Product> getProduct(int productId) {
-
+    // Obtener un producto dado el ID
+    public Optional<Product> getProduct(int productId){
         return productoCrudRepository.findById(productId)
-                .map(productMapper::toProduct);
+                .map(producto -> productMapper.toProduct(producto));
     }
 
-    //  Guardar producto
-    @Override
-    public Product save(Product product) {
-
+    //Guardar un producto
+    public Product save(Product product){
         Producto producto = productMapper.toProducto(product);
         return productMapper.toProduct(productoCrudRepository.save(producto));
     }
-
-    //  Eliminar producto
-    @Override
-    public void delete(int productId) {
-
+    // Eliminar un producto por ID
+    public void delete(int productId){
         productoCrudRepository.deleteById(productId);
     }
 }

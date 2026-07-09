@@ -4,14 +4,16 @@ import mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity.Producto;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface ProductoCrudRepository extends CrudRepository<Producto, Integer> {
+public interface ProductoCrudRepository
+        extends CrudRepository<Producto, Integer>{
 
-    // Productos por categoría (CORRECTO)
-    List<Producto> findByCategoriaIdCategoriaOrderByNombreAsc(int idCategoria);
+    List<Producto>findByCantidadOrderByNombreAsc(int idCategoria);
 
-    //  Productos escasos
-    List<Producto> findByCantidadStockLessThanAndEstado(int cantidad, boolean estado);
+    Optional<List<Producto>>findByCantidadStockLessThanAndEstado(int cantidad, boolean estado);
 
-    List<Producto> findByCategoriaIdCategoria(int categoryId);
+    boolean estado(Boolean estado);
+
+    boolean Estado(Boolean estado);
 }

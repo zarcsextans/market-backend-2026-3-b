@@ -24,7 +24,7 @@ public class Compra {
 
     //Relacion con cliente: Muchas compras para un cliente
     @ManyToOne
-    @JoinColumn(name = "idCliente", insertable = false, updatable = false)
+    @JoinColumn(name = "id:cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
 
@@ -74,5 +74,13 @@ public class Compra {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

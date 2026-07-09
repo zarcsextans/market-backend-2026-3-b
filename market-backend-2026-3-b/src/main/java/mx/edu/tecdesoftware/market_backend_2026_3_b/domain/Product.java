@@ -9,7 +9,6 @@ public class Product {
     private int stock;
     private boolean active;
     private Category category;
-
     public int getProductId() {
         return productId;
     }
@@ -50,7 +49,7 @@ public class Product {
         this.stock = stock;
     }
 
-    public boolean isActive() {
+    public boolean getActive() {
         return active;
     }
 
