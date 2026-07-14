@@ -5,19 +5,20 @@ import java.util.List;
 
 public class Purchase {
 
-    private int purchaseId;
+    private Integer purchaseId;
     private String clientId;
     private LocalDateTime date;
     private String paymentMethod;
     private String comment;
-    private String state;
+    private String status;
     private List<PurchaseItem> items;
 
-    public int getPurchaseId() {
+
+    public Integer getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(int purchaseId) {
+    public void setPurchaseId(Integer purchaseId) {
         this.purchaseId = purchaseId;
     }
 
@@ -53,12 +54,12 @@ public class Purchase {
         this.comment = comment;
     }
 
-    public String getState() {
-        return state;
+    public String getStatus() {
+        return status;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<PurchaseItem> getItems() {

@@ -29,13 +29,12 @@ public class ProductoRepository implements ProductRepository {
     }
 
     // Obtener productos por categoria
-
     public Optional<List<Product>> getByCategory(int categoryId){
         List<Producto> productos
-                = productoCrudRepository.findByCantidadOrderByNombreAsc(categoryId);
+                = productoCrudRepository.findByIdCategoriaOrderByNombreAsc(categoryId);
+
         return Optional.of(productMapper.toProducts(productos));
     }
-
     // Obtener productos escasos
     public Optional<List<Product>> getScarceProducts(int quantity){
         Optional<List<Producto>> productos =

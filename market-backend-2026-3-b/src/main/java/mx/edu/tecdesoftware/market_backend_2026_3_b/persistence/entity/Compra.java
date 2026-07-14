@@ -2,31 +2,40 @@ package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+@Entity
+@Table(name = "compras")
 public class Compra {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_compra")
+    @Column(name = "id_compra")
     private Integer idCompra;
 
-    @Column (name = "id_cliente")
+    @Column(name = "id_cliente")
     private String idCliente;
 
     private LocalDateTime fecha;
 
-    @Column (name = "medio_pago")
+    @Column(name = "medio_pago")
     private String medioPago;
+
     private String comentario;
     private String estado;
 
-
-    //Relacion con cliente: Muchas compras para un cliente
+    // Relación con cliente
     @ManyToOne
-    @JoinColumn(name = "id:cliente", insertable = false, updatable = false)
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
+    // Relación con los productos de la compra
+    @OneToMany(
+            mappedBy = "compra",
+            cascade = CascadeType.ALL
+    )
+    private List<CompraProducto> productos;
 
     public Integer getIdCompra() {
         return idCompra;
@@ -82,5 +91,13 @@ public class Compra {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<CompraProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<CompraProducto> productos) {
+        this.productos = productos;
     }
 }

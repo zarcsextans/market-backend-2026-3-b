@@ -2,40 +2,41 @@ package mx.edu.tecdesoftware.market_backend_2026_3_b.domain;
 
 public class PurchaseItem {
 
-    private int productId;
-    private int quantity;
-    private double total;
-    private boolean active;
+    private Integer productId;
+    private Integer quantity;
+    private Double total;
+    private Boolean status;
 
-    public int getProductId() {
+
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public double getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 
-    public boolean getActive() {
-        return active;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

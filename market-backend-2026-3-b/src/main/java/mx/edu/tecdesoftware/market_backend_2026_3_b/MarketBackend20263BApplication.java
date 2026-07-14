@@ -1,4 +1,4 @@
-package market_backend_2026_3_b;
+package mx.edu.tecdesoftware.market_backend_2026_3_b;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

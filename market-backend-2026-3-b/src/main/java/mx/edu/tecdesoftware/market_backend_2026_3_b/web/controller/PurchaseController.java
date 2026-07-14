@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("/purchases")
 public class PurchaseController {
 
+
     @Autowired
     private PurchaseService purchaseService;
 
@@ -32,25 +33,32 @@ public class PurchaseController {
     public ResponseEntity<List<Purchase>> getByClient(
             @PathVariable("id") String clientId) {
 
-        List<Purchase> purchases = purchaseService.getByClient(clientId);
 
-        if (purchases.isEmpty()) {
+        List<Purchase> compras = purchaseService.getByClient(clientId);
+
+
+        if (compras.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(purchases);
+
+        return ResponseEntity.ok(compras);
     }
 
 
-    // Guardar una compra
+
+    // Guardar compra
     @PostMapping("/save")
     public ResponseEntity<Purchase> save(
             @RequestBody Purchase purchase) {
 
-        Purchase savedPurchase = purchaseService.save(purchase);
+
+        Purchase nuevaCompra = purchaseService.save(purchase);
+
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(savedPurchase);
+                .body(nuevaCompra);
     }
+
 }

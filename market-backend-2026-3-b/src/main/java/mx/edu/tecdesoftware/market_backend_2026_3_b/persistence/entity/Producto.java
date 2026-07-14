@@ -3,7 +3,7 @@ package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "producto")
+@Table(name = "productos")
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,8 +11,7 @@ public class Producto {
     private Integer idProducto;
     private String nombre;
     @Column(name = "id_categoria")
-    private String idCategoria;
-
+    private Integer idCategoria;
     @Column(name = "codigo_barras")
     private String codigoBarras;
 
@@ -48,14 +47,13 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getIdCategoria() {
+    public Integer getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(String idCategoria) {
+    public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
     }
-
     public String getCodigoBarras() {
         return codigoBarras;
     }
@@ -86,5 +84,12 @@ public class Producto {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

@@ -6,19 +6,20 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "categrias")
+@Table(name = "categorias")
 public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_categoria")
+    @Column(name = "id_categoria")
     private Integer idCategoria;
 
     private String descripcion;
+
     private Boolean estado;
 
+
     @OneToMany(mappedBy = "categoria")
-    //"quiero que me des una lista de los productos"
     private List<Producto> productos;
 
 
@@ -55,8 +56,5 @@ public class Categoria {
     }
 
     public Categoria() {
-
-
     }
-
 }
