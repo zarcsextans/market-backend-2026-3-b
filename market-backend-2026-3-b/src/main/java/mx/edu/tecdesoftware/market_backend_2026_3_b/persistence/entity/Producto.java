@@ -5,13 +5,26 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "productos")
 public class Producto {
+
+    // Autoimplementable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id_producto")
     private Integer idProducto;
+
     private String nombre;
+    private Boolean estado;
+
+    //Relación con categoría
+    //Muchos productos pueden pertenecer a una categoría
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Categoria categoria;
+
     @Column(name = "id_categoria")
     private Integer idCategoria;
+
     @Column(name = "codigo_barras")
     private String codigoBarras;
 
@@ -21,22 +34,8 @@ public class Producto {
     @Column(name = "cantidad_stock")
     private Integer cantidadStock;
 
-    private Boolean estado;
-
-
-    //Relacion con categoria
-    //Muchos productos puede pertenecer a una
-
-    @ManyToOne
-    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private Categoria categoria;
-
     public Integer getIdProducto() {
         return idProducto;
-    }
-
-    public void setIdProducto(Integer idProducto) {
-        this.idProducto = idProducto;
     }
 
     public String getNombre() {
@@ -47,6 +46,22 @@ public class Producto {
         this.nombre = nombre;
     }
 
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     public Integer getIdCategoria() {
         return idCategoria;
     }
@@ -54,6 +69,7 @@ public class Producto {
     public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
     }
+
     public String getCodigoBarras() {
         return codigoBarras;
     }
@@ -78,18 +94,7 @@ public class Producto {
         this.cantidadStock = cantidadStock;
     }
 
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
 }

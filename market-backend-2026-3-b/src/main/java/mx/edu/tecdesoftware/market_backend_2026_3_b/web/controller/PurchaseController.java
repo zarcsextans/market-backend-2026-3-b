@@ -13,52 +13,23 @@ import java.util.List;
 @RequestMapping("/purchases")
 public class PurchaseController {
 
-
     @Autowired
     private PurchaseService purchaseService;
 
-
-    // Obtener todas las compras
     @GetMapping("/all")
     public ResponseEntity<List<Purchase>> getAll() {
-
-        return ResponseEntity.ok(
-                purchaseService.getAll()
-        );
+        return new ResponseEntity<>(purchaseService.getAll(), HttpStatus.OK);
     }
 
-
-    // Obtener compras por cliente
     @GetMapping("/client/{id}")
-    public ResponseEntity<List<Purchase>> getByClient(
-            @PathVariable("id") String clientId) {
-
-
-        List<Purchase> compras = purchaseService.getByClient(clientId);
-
-
-        if (compras.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
-
-        return ResponseEntity.ok(compras);
+    public ResponseEntity<List<Purchase>> getByClient(@PathVariable("id") String clientId) {
+        return purchaseService.getByClient(clientId)
+                .map(purchases -> new ResponseEntity<>(purchases, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-
-
-    // Guardar compra
     @PostMapping("/save")
-    public ResponseEntity<Purchase> save(
-            @RequestBody Purchase purchase) {
-
-
-        Purchase nuevaCompra = purchaseService.save(purchase);
-
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(nuevaCompra);
+    public ResponseEntity<Purchase> save(@RequestBody Purchase purchase) {
+        return new ResponseEntity<>(purchaseService.save(purchase), HttpStatus.CREATED);
     }
-
 }

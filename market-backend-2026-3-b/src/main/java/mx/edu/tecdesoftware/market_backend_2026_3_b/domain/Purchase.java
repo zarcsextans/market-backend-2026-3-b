@@ -4,15 +4,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Purchase {
-
     private Integer purchaseId;
     private String clientId;
     private LocalDateTime date;
     private String paymentMethod;
     private String comment;
-    private String status;
+    private String state;
     private List<PurchaseItem> items;
-
 
     public Integer getPurchaseId() {
         return purchaseId;
@@ -54,12 +52,12 @@ public class Purchase {
         this.comment = comment;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public List<PurchaseItem> getItems() {

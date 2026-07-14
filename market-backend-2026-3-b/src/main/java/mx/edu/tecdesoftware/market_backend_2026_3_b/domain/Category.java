@@ -6,13 +6,6 @@ public class Category {
     private String category;
     private boolean active;
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public int getCategoryId() {
         return categoryId;
@@ -22,7 +15,15 @@ public class Category {
         this.categoryId = categoryId;
     }
 
-    public boolean getActive() {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public boolean isActive() {
         return active;
     }
 

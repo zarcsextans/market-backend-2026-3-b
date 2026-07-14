@@ -10,33 +10,29 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
+
+    //con esto lo llama
     @Autowired
     private ProductRepository productRepository;
-    public List<Product> getAll() {
-        return productRepository.getAll();
-    }
 
-    public Optional<Product> getProduct(int productId){
-        return productRepository.getProduct(productId);
-    }
+    public List<Product> getAllProducts() {return  productRepository.getAll();}
 
-    public Optional<List<Product>> getProductByCategory(int categoryId){
-        return productRepository.getByCategory(categoryId);
+    public List<Product> getAll(){return productRepository.getAll();}
 
-    }
+    public Optional<Product> getProduct(int productId) {return productRepository.getProduct(productId);}
 
-    public Product save(Product product){
-        return productRepository.save(product);
-    }
+    public Optional<List<Product>> getByCategory(int categoryId) {return productRepository.getByCategory(categoryId);}
 
-    public boolean delete(int productId){
-        if(getProduct(productId).isPresent()){
+    public Product save(Product product) {return productRepository.save(product);}
+
+    //verificar que existe antes de borrar
+    public boolean delete(int productId) {
+        if (getProduct(productId).isPresent()) {
             productRepository.delete(productId);
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
-    public Optional<List<Product>> getByCategory(int categoryId) {
-        return productRepository.getByCategory(categoryId);
-    }
+
 }

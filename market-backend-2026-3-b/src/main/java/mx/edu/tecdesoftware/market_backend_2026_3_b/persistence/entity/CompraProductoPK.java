@@ -4,18 +4,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 @Embeddable
 public class CompraProductoPK implements Serializable {
-
-    private static final long serialVersionUID = 1L;
 
     @Column(name = "id_compra")
     private Integer idCompra;
 
     @Column(name = "id_producto")
-    private Integer idProducto;
+    private Integer idProducto;   // ← corregido a minúscula
 
     public Integer getIdCompra() {
         return idCompra;
@@ -31,19 +28,5 @@ public class CompraProductoPK implements Serializable {
 
     public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CompraProductoPK)) return false;
-        CompraProductoPK that = (CompraProductoPK) o;
-        return Objects.equals(idCompra, that.idCompra) &&
-                Objects.equals(idProducto, that.idProducto);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idCompra, idProducto);
     }
 }
